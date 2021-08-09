@@ -45,11 +45,11 @@ if(!$gateway_error){
 						
 						if(d.bank.installments[i].plus_installment > 0 )
 						{			
-						    $(".installment-table").append("<br><list-style-type: none;> <div class=installment-item data-key=" + d.bank.installments[i].instalment_key + "><input type=radio name=installment /> " + d.bank.installments[i].desc + "(+" + d.bank.installments[i].plus_installment+ ")" +"  -&nbsp;&nbsp;" + d.bank.installments[i].instalment_amount + "&nbsp;TL" + "</div></li> <br>");
+						    $(".installment-table").append("<br><list-style-type: none;> <div class=installment-item data-key=" + d.bank.installments[i].instalment_key + "><input type=radio name=installment  /> " + d.bank.installments[i].desc + "(+" + d.bank.installments[i].plus_installment+ ")" +"  -&nbsp;&nbsp;" + d.bank.installments[i].instalment_amount + "&nbsp;TL" + "</div></li> <br>");
 						}
 						else
 						{
-							$(".installment-table").append("<br><list-style-type: none;> <div class=installment-item data-key=" + d.bank.installments[i].instalment_key + "><input type=radio name=installment /> " + d.bank.installments[i].desc + "-&nbsp;&nbsp;" + d.bank.installments[i].instalment_amount + "&nbsp;TL" + "</div></li> <br>");
+							$(".installment-table").append("<div class='installment-item' data-key=" + d.bank.installments[i].instalment_key + "> <table class='text-center' > <tr> <td style='width:10%;border: 0px solid gray;padding:2px !important;border-bottom:1px solid Gainsboro'> <input type=radio name=installment /></td> <td style='width:47%;border: 0px solid gray;padding:0px !important;border-bottom:1px solid Gainsboro'>" + d.bank.installments[i].desc+"</td><td style='width:43%;border: 0px solid gray;padding:0px !important;border-bottom:1px solid Gainsboro'>"  + d.bank.installments[i].instalment_amount + "&nbsp;TL" + "</td></tr></table></div>");
 						}
                     }
                 
@@ -107,22 +107,24 @@ if(!$gateway_error){
 <style type="text/css">
 input[type=radio] {
     box-sizing: border-box;
-    margin: 11px;
-    width: 94px;
-    height: 18px;
+    margin-left: 11px;
+    padding-top:2px;
+
+    
+ 
 	
 }
 
 input[type="text"]{
-    font-size: 2.0rem;
+    
 	-webkit-appearance: auto;
     -moz-appearance: none;
     background: #fff;
-    border-radius: 66px;
+    border-radius: 25px;
     border-style: solid;
-    border-width: 0.3rem;
+    border-width: 0.1rem;
     display: block;
-    font-size: 2.3rem;
+    font-size: 1rem;
     letter-spacing: -0.015em;
     margin: 0;
     padding: 1.5rem 1.8rem;
@@ -132,11 +134,11 @@ input[type="password"]{
     -webkit-appearance: auto;
     -moz-appearance: none;
     background: #fff;
-    border-radius: 66px;
+    border-radius: 25px;
     border-style: solid;
-    border-width: 0.3rem;
+    border-width: 0.1rem;
     display: block;
-    font-size: 2.3rem;
+    font-size: 1rem;
     letter-spacing: -0.015em;
     margin: 0;
     padding: 1.5rem 1.8rem;
@@ -153,25 +155,31 @@ input[type="password"]{
   padding-top: 0rem!important;
 }
 
+@media (min-width:991px) and (max-width:1300px){
+  .forHdResolution{
+     width:1% !important;
+   }
+}
 
 </style>
 
 
 <body>
-<div class="container py-5">
+<div class="container py-6">
 
   <!-- For demo purpose -->
   <div class="row mb-4">
     <div class="col-lg-8 mx-auto text-center">
-      <h1 class="display-3">Kart Bilgileri</h1>
+      <h1>Kart Bilgileri</h1>
     </div>
   </div>
   <!-- End -->
 
 
   <div class="row">
-    <div class="col-lg-6 mx-auto">
-      <div class="bg-white rounded-lg shadow-sm p-5">
+  <div class="col-md-1 col-lg-3"></div>
+    <div class="col-xs-12 col-sm-12 col-md-10 forHdResolution col-lg-6">
+      <div class="bg-white rounded-lg shadow-sm p-xs-0 p-sm-5">
         
         <!-- Credit card form content -->
         <div class="tab-content">
@@ -184,32 +192,32 @@ input[type="password"]{
             <form role="form">
               <div class="form-group">
 				<p>Kart Sahibi</p>
-                 <input type="text" name="cardHolderName" id="cardHolderName" data-paynet="holderName" class="form-control" placeholder="Card Holder" value="" required autocomplete="off" />
+                 <input type="text" name="cardHolderName" id="cardHolderName" data-paynet="holderName" class="form-control" placeholder="Kart Üzerindeki İsim" value="" required autocomplete="off" />
               </div>
 			  
 	
               <div class="form-group">
                     <p>Kart Numarası</p>
                 <div class="input-group">
-                            <input type="text" name="cardNumber" maxlength="16" id="cardNumber" data-paynet="number" class="form-control" placeholder="Card Number" value="" />
+                            <input type="text"  name="cardNumber" maxlength="16" id="cardNumber" data-paynet="number" class="form-control" placeholder="Kredi Kartı Numarası" value="" required/>
                 </div>				
               </div>
 
 							
 			<div class="row align="center">
 			
-                <div class="col-sm-8">
+                <div class="col-sm-7">
                   <div class="form-group">
                     <p>Son Kullanım Tarihi</p>
 						<div class="input-group">
-					<input type="text" name="expMonth" maxlength="2" id="expMonth" data-paynet="exp-month" class="form-control" placeholder="Month" value="" />
-					   <input type="text" name="expYear" maxlength="4" id="expYear" data-paynet="exp-year" class="form-control" placeholder="Year" value="" />
+					<input type="text" name="expMonth" maxlength="2" id="expMonth" data-paynet="exp-month" class="form-control" placeholder="AA" value="" />
+					   <input type="text" name="expYear" maxlength="4" id="expYear" data-paynet="exp-year" class="form-control" placeholder="YY" value="" />
 						</div>
                   </div>
                 </div>
 				
 				
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                   <div class="form-group mb-4">
                     <p>CVV </p>                
 					<input type="password" maxlength="4" name="cvv" id="cvv" data-paynet="cvv" placeholder="CVV" class="form-control" value="" />
@@ -226,14 +234,14 @@ input[type="password"]{
 							</label>
 						</div>
 						
-						<div class="installment-table col-sm-12 no-padding-left no-padding-right panel-body" style="border-style: ridge;display: none; line-height: 0.2; border-radius:28px; border-color:aliceblue;">
+						<div class="installment-table col-sm-12 no-padding-left no-padding-right panel-body" style="border-style: ridge;display: none; border-radius:28px; border-color:aliceblue;">
 							<ol></ol>
 						</div>
 			</div>         			
                         <input type="hidden" name="installmentKey" id="installmentKey" data-paynet="installmentKey" value="" />	
 						<div>		
 						<br>												
-                        <button type="submit" class="btn btn-primary btn-lg btn-block" data-paynet="submit" style="padding: 0.5rem 1rem;font-size:1.25rem;line-height: 2.5;border-radius: 2.3rem;">Öde</button>
+                        <button type="submit" class="btn btn-success btn-lg btn-block" data-paynet="submit" style="padding: 0.5rem 1rem;font-size:1.05rem;line-height: 2.5;border-radius: 2.3rem;" >Ödemeyi Tamamla</button>
   
 
 
